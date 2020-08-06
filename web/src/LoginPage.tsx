@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import * as firebase from 'firebase'
+import * as firebaseui from 'firebaseui'
 import { ui } from './firebase'
 import { useAppDispatch } from './slices/store';
 import { userActions } from './slices/userSlice';
@@ -25,6 +26,7 @@ const TopBar: React.FC = () => {
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.EmailAuthProvider.PROVIDER_ID
             ],
+            credentialHelper: firebaseui.auth.CredentialHelper.NONE,
             callbacks: {
                 signInSuccessWithAuthResult: (authResult, redirectUrl) => {
                     console.log(authResult);
